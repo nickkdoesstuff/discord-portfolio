@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function SpotifyActivity({ title, artist, album, cover, id }: any) {
+export default function SpotifyActivity({ active, title, artist, album, cover, id }: any) {
     return (
-        <div className="mt-3 border-t-2 border-zinc-700">
+        <div className={`mt-3 border-t-2 border-zinc-700 ${active ? "block" : "hidden"}`}>
             <div className='flex mt-3'>
                 <Image src={cover} className="rounded-lg" height="80" width="80" alt="spotify album art"></Image>
                 <div className="flex flex-col ml-4 m-auto">

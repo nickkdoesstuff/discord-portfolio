@@ -58,7 +58,7 @@ export default function HomePage(){
             if(findText) {
                 parsedStatusText = findText.state 
             } else {
-                parsedStatusText = "No status set"
+                parsedStatusText = ""
             }
 
             setName(data.data.discord_user.username)
@@ -79,8 +79,8 @@ export default function HomePage(){
 
     return (
         <div>
-            { loading ? <p>Loading, we'll just be a few moments...</p> :  <Profile name={name} tag={tag} status={status} statusText={statusText} avatar={avatar} />}
-            { spot ? <SpotifyActivity title={title} artist={artist} album={album} cover={cover} id={id} /> : null }
+            <Profile name={name || "loading"} tag={tag || "0000"} status={status || ""} statusText={statusText || ""} avatar={avatar} />
+            <SpotifyActivity active={spot} title={title} artist={artist} album={album} cover={cover} id={id}/>
         </div>
     )
 }
