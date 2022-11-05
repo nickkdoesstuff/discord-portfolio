@@ -7,16 +7,13 @@ export default function Profile({ name, tag, status, statusText, activity, avata
 
     return (
         <div>
-            <div className="flex border-b-2 border-zinc-700 p-2">
+            <div className="flex p-2">
                 <Image src={avatar} className={`rounded-full border-2 ${ringCol} p-1`} width="75" height="75" alt="user logo"></Image>
                 <div className="flex flex-col m-auto ml-4">
                     <p className="font-bold text-2xl mb-1">{name}<span className="text-gray-500">#{tag}</span></p>
                     <p>{statusText}</p>
                 </div>
             </div>
-
-            <h1 className="text-2xl font-bold mt-1">Currently</h1>
-            <p>{activity}</p>
             
         </div>
     )

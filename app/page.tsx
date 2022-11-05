@@ -13,7 +13,6 @@ export default function HomePage(){
     const [tag, setTag] = useState("")
     const [status, setStatus] = useState("")
     const [statusText, setStatusText] = useState("")
-    const [activity, setActivity] = useState("")
     const [avatar, setAvatar] = useState("")
 
 
@@ -33,7 +32,6 @@ export default function HomePage(){
 
         if(data.data.listening_to_spotify == true) {
             const spotData =  data.data.spotify
-            setActivity("Listening to Spotify")
             setTitle(spotData.song)
             setArtist(spotData.artist)
             setAlbum(spotData.album)
@@ -42,7 +40,6 @@ export default function HomePage(){
             setSpot(true)
         } else {
             setSpot(false)
-            setActivity("Nothing...")
         }
     }
     
@@ -82,7 +79,7 @@ export default function HomePage(){
 
     return (
         <div>
-            { loading ? <p>Loading, we'll just be a few moments...</p> :  <Profile name={name} tag={tag} status={status} statusText={statusText} activity={activity} avatar={avatar} />}
+            { loading ? <p>Loading, we'll just be a few moments...</p> :  <Profile name={name} tag={tag} status={status} statusText={statusText} avatar={avatar} />}
             { spot ? <SpotifyActivity title={title} artist={artist} album={album} cover={cover} id={id} /> : null }
         </div>
     )
