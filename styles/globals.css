@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a {
+    cursor: none;
+}
+
+#cursor {
+    transition: width 150ms, height 150ms;
+}
+
+.largeCursor {
+    height: 25px;
+    width: 25px;
+}

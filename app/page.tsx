@@ -4,7 +4,8 @@ import "../styles/globals.css"
 export default function HomePage(){
     return (
         <div>
-            <p>Hi, I'm Nick. I like to play with code :)</p>
+            <h1 className="font-bold text-2xl">Hi.</h1>
+            <p>I'm Nick, sometimes I make things</p>
         </div>
     )
 }
