@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-head-element */
+'use client'
 import Link from 'next/link'
+import Profile from '../components/Profile';
+import SpotifyActivity from '../components/Spotify';
 
 export default function RootLayout({
   children,
@@ -14,13 +17,17 @@ export default function RootLayout({
       <body className="bg-zinc-900 flex flex-col gap-2 items-center justify-center h-[100vh] text-white">
         <div className="bg-zinc-800 p-2 rounded-lg border-solid border-2 border-zinc-700">
           <div className="flex gap-3">
-            <a className="material-symbols-rounded cursor-pointer" href="/">home</a>
-            <a className="material-symbols-rounded cursor-pointer" href="/talk">label</a>
-            <a className="material-symbols-rounded cursor-pointer" href="/project">language</a>
+            <Link className="material-symbols-rounded cursor-pointer" href="/">home</Link>
+            <Link className="material-symbols-rounded cursor-pointer" href="/talk">label</Link>
+            <Link className="material-symbols-rounded cursor-pointer" href="/project">language</Link>
           </div>
         </div>
         <div className="bg-zinc-800 p-2 rounded-lg border-solid border-2 border-zinc-700">
-          {children}
+          <Profile />
+          <div className="text-center p-3">
+            {children}
+          </div>
+          <SpotifyActivity />
         </div>
         </body>
     </html>

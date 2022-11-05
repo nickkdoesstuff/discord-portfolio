@@ -1,9 +1,46 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export default function SpotifyActivity({ active, title, artist, album, cover, id }: any) {
+
+export default function SpotifyActivity({ }: any) {
+
+    const [title, setTitle] = useState("")
+    const [artist, setArtist] = useState("")
+    const [album, setAlbum] = useState("")
+    const [cover, setCover] = useState("")
+    const [id, setId] = useState("")
+    const [spot, setSpot] = useState(false)
+
+    async function setSpotifyStats() {
+        const fetched = await fetch("https://api.lanyard.rest/v1/users/265781702306037762", { cache: 'no-cache' })
+        const data = await fetched.json()
+
+        if(data.data.listening_to_spotify == true) {
+            const spotData =  data.data.spotify
+            setTitle(spotData.song)
+            setArtist(spotData.artist)
+            setAlbum(spotData.album)
+            setCover(spotData.album_art_url)
+            setId(spotData.track_id)
+            setSpot(true)
+        } else {
+            setSpot(false)
+        }
+    }
+
+    useEffect(() => {
+        setInterval(async () => {
+            await setSpotifyStats()
+        }, 10000)
+    }, [])
+
+    setTimeout(async () => {
+        await setSpotifyStats()
+    }, 1)
+    
     return (
-        <div className={`mt-3 border-t-2 border-zinc-700 ${active ? "block" : "hidden"}`}>
+        <div className={`border-t-2 border-zinc-700 ${spot ? "block" : "hidden"}`}>
             <div className='flex mt-3'>
                 <Image src={cover} className="rounded-lg" height="80" width="80" alt="spotify album art"></Image>
                 <div className="flex flex-col ml-4 m-auto">
