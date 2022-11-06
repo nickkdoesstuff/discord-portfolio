@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import Profile from '../components/Profile';
 import SpotifyActivity from '../components/Spotify';
-import Cursor from '../components/Cursor';
 
 export default function RootLayout({
   children,
